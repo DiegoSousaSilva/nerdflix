@@ -180,6 +180,32 @@
           "url": "https://www.youtube.com/watch?v=MwCx2qKdbDw&feature=youtu.be"
         }
       ]
-    }
+    },
+    {
+      "titulo": "One Piece",
+      "cor": "orange",
+      "videos": [
+        {
+          "titulo": "Episodio 01",
+          "url": "http://svr2---s576-ktja6arf-cdn.gvideo.g-storage.network/animes/b-1/animes/one-piece/1-east-blue/legendado/hd/1.mp4?rm=KjCOMpsJVcg1vwzuzuE-8A&rf=1597162093"
+        },
+        {
+          "titulo": "Episodio 02",
+          "url": "http://svr2---s576-ktja6arf-cdn.gvideo.g-storage.network/animes/b-1/animes/one-piece/1-east-blue/legendado/hd/2.mp4?rm=uGfdfq0eYxL8TMr5cZUe7g&rf=1597163704"
+        },
+        {
+          "titulo": "Episodio 03",
+          "url": "http://svr2---s576-ktja6arf-cdn.gvideo.g-storage.network/animes/b-1/animes/one-piece/1-east-blue/legendado/hd/3.mp4?rm=SfLvCXiKph3j1CAQ0TWXoQ&rf=1597162314"
+        },
+        {
+          "titulo": "Episodio 04",
+          "url": "http://svr2---s576-ktja6arf-cdn.gvideo.g-storage.network/animes/b-1/animes/one-piece/1-east-blue/legendado/hd/4.mp4?rm=iuPKpk401ITSzpnKdWdCeg&rf=1597163256"
+        },
+        {
+          "titulo": "Episodio 05",
+          "url": "http://svr2---s576-ktja6arf-cdn.gvideo.g-storage.network/animes/b-1/animes/one-piece/1-east-blue/legendado/hd/5.mp4?rm=oQGnmF1_uwpA-gpPEBV2mw&rf=1597163916"
+        }
+      ]
+    }    
   ]
 }
