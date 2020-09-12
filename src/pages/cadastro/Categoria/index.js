@@ -1,7 +1,7 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-shadow */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 // eslint-disable-next-line import/no-named-as-default
@@ -33,6 +33,18 @@ const CadastroCategoria = () => {
       info.target.value,
     );
   }
+
+  useEffect(() => {
+    const URL = 'http://localhost:8080/categorias';
+
+    fetch(URL)
+      .then(async (resServer) => {
+        const res = await resServer.json();
+        setCategorias([
+          ...res,
+        ]);
+      });
+  }, []);
 
   return (
     <PageDefault>
@@ -80,6 +92,10 @@ const CadastroCategoria = () => {
         </Button>
 
       </form>
+
+      {categorias.length === 0 && (
+        <div>Loading.....</div>
+      )}
 
       <ul>
         {categorias.map((categorias) => (
