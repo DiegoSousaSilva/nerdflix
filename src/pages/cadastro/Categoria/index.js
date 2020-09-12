@@ -82,9 +82,9 @@ const CadastroCategoria = () => {
       </form>
 
       <ul>
-        {categorias.map((categorias, indice) => (
-          <li key={`${categorias}${indice}`}>
-            {categorias.name}
+        {categorias.map((categorias) => (
+          <li key={`${categorias}${categorias.nome}`}>
+            {categorias.nome}
 
           </li>
         ))}

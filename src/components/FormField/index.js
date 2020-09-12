@@ -65,7 +65,7 @@ c
 ${({ value }) => {
     const hasValue = value.length > 0;
     return hasValue && css`
-    &::not([type="color"]) + ${Label.Text}{
+    &:not([type="color"]) + ${Label.Text}{
       transform: scale(.6) translateY(-10px);
     }
   `;
