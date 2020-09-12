@@ -33,10 +33,12 @@ const CadastroCategoria = () => {
       info.target.value,
     );
   }
-
+  
+  
   useEffect(() => {
-    const URL = 'http://localhost:8080/categorias';
-
+    const URL = window.location.href.includes('localhost')
+        ?  'http://localhost:8080/categorias'
+        : 'https://nerdflix-diego.herokuapp.com/categorias';
     fetch(URL)
       .then(async (resServer) => {
         const res = await resServer.json();
