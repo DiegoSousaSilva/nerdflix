@@ -2,8 +2,20 @@ import config from '../config';
 
 const URL_CATEGORIES = `${config.URL_BACKEND}/categorias`;
 
+function getAll() {
+  return fetch(`${URL_CATEGORIES}`)
+    .then(async (resServer) => {
+      if (resServer.ok); {
+        const res = await resServer.json();
+        return res;
+      }
+      // eslint-disable-next-line no-unreachable
+      throw new Error('Não foi possivel acessar aos dados :(');
+    });
+}
+
 function getAllWithVideos() {
-  return fetch(`${URL_CATEGORIES}/?_embed=videos`)
+  return fetch(`${URL_CATEGORIES}?_embed=videos`)
     .then(async (resServer) => {
       if (resServer.ok); {
         const res = await resServer.json();
@@ -15,5 +27,5 @@ function getAllWithVideos() {
 }
 
 export default {
-  getAllWithVideos,
+  getAllWithVideos, getAll,
 };

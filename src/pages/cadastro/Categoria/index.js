@@ -2,15 +2,25 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-shadow */
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 // eslint-disable-next-line import/no-named-as-default
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
 import useForm from '../../../hooks/useForm';
+import category from '../../../repositories/category';
+// import categoriesRepository from '../../../repositories/categorias';
 
 const CadastroCategoria = () => {
-  const valoresIniciais = useState([
+  const history = useHistory();
+
+  const { handleChange, values } = useForm({
+    titulo: '',
+    description: '',
+    color: '',
+  });
+
+  /* const valoresIniciais = useState([
     {
       nome: '',
       description: '',
@@ -18,7 +28,8 @@ const CadastroCategoria = () => {
     },
   ]);
 
-  const { handleChange, values, clearForm } = useForm(valoresIniciais);
+  const { handleChange, values, clearForm } = useForm(valoresIniciais); */
+
   const [categorias, setCategorias] = useState([]);
 
   useEffect(() => {
@@ -42,21 +53,27 @@ const CadastroCategoria = () => {
         {values.name}
       </h1>
 
-      <form onSubmit={function handleSubmit(info) {
-        info.preventDefault();
-        setCategorias([
-          ...categorias,
-          values,
-        ]);
-        clearForm();
-      }}
+      <form onSubmit={
+        (event) => {
+          event.preventDefault();
+          category.create({
+            titulo: values.titulo,
+            description: values.description,
+            color: values.color,
+          })
+            .then(() => {
+              console.log('Cadastrado com sucesso!!!');
+              history.push('/');
+            });
+        }
+    }
       >
 
         <FormField
           label="Nome da Categoria:"
-          name="nome"
+          name="titulo"
           type="text"
-          value={values.nome}
+          value={values.titulo}
           onChange={handleChange}
         />
 
@@ -88,9 +105,8 @@ const CadastroCategoria = () => {
 
       <ul>
         {categorias.map((categorias) => (
-          <li key={`${categorias}${categorias.titulo}`}>
+          <li key={`${categorias}${categorias.id}`}>
             {categorias.titulo}
-
           </li>
         ))}
       </ul>
