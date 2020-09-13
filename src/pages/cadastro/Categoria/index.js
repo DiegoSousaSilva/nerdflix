@@ -7,6 +7,7 @@ import PageDefault from '../../../components/PageDefault';
 // eslint-disable-next-line import/no-named-as-default
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
+import useForm from '../../../hooks/useForm';
 
 const CadastroCategoria = () => {
   const valoresIniciais = useState([
@@ -17,28 +18,14 @@ const CadastroCategoria = () => {
     },
   ]);
 
-  const [values, setValues] = useState(valoresIniciais);
+  const { handleChange, values, clearForm } = useForm(valoresIniciais);
   const [categorias, setCategorias] = useState([]);
 
-  const setValue = (key, value) => {
-    setValues({
-      ...values,
-      [key]: value,
-    });
-  };
-
-  function handleChange(info) {
-    setValue(
-      info.target.getAttribute('name'),
-      info.target.value,
-    );
-  }
-  
-  
   useEffect(() => {
-    const URL = window.location.href.includes('localhost')
-        ?  'http://localhost:8080/categorias'
-        : 'https://nerdflix-diego.herokuapp.com/categorias';
+    const URL = window.location.hostname.includes('localhost')
+      ? 'http://localhost:8080/categorias'
+      : 'https://nerdflix-diego.herokuapp.com/categorias';
+
     fetch(URL)
       .then(async (resServer) => {
         const res = await resServer.json();
@@ -61,7 +48,7 @@ const CadastroCategoria = () => {
           ...categorias,
           values,
         ]);
-        setValues(valoresIniciais);
+        clearForm();
       }}
       >
 
@@ -101,8 +88,8 @@ const CadastroCategoria = () => {
 
       <ul>
         {categorias.map((categorias) => (
-          <li key={`${categorias}${categorias.nome}`}>
-            {categorias.nome}
+          <li key={`${categorias}${categorias.titulo}`}>
+            {categorias.titulo}
 
           </li>
         ))}
